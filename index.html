@@ -360,62 +360,7 @@
   <div class="meta" id="header-meta">
     
       <h2 class="title">
-          <a href="/1899/11/30/hello-world/">
-              
-                  Hello World
-              
-          </a>
-      </h2>
-    
-
-    
-      <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;1899-11-30
-      </time>
-    
-
-    
-      
-
-    
-
-    
-
-    
-
-  </div>
-</section>
-
-    <section class="article typo">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-        
-
-        
-    </section>
-</article>
-
-        </div>
-      
-    
-      
-        <div class="post-wrapper">
-          <article class="post reveal ">
-    
-<section class="meta">
-  
-  <div class="meta" id="header-meta">
-    
-      <h2 class="title">
-          <a href="/1899/11/30/leetcode刷题(C语言)/">
+          <a href="/2019/01/01/leetcode刷题(C语言)/">
               
                   leetcode刷题(C语言)
               
@@ -425,7 +370,7 @@
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;1899-11-30
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-01
       </time>
     
 
@@ -467,6 +412,61 @@
 <p>A and B will have length at most 100.</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">rotateString</span><span class="params">(<span class="keyword">char</span>* A, <span class="keyword">char</span>* B)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> lena=<span class="built_in">strlen</span>(A);</span><br><span class="line">    <span class="keyword">int</span> lenb=<span class="built_in">strlen</span>(B);</span><br><span class="line">    <span class="keyword">char</span> *newa=A;</span><br><span class="line">    <span class="keyword">char</span> tempc;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(lenb!=lena)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strcmp</span>(A,B)==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//printf("%s\n", A);</span></span><br><span class="line">    <span class="keyword">while</span>(j&lt;lena)&#123;</span><br><span class="line">        tempc=newa[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lena<span class="number">-1</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            newa[i]=newa[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        newa[lena<span class="number">-1</span>]=tempc;</span><br><span class="line">        <span class="comment">//printf("%s,%s\n",newa,B );</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strcmp</span>(B,newa)==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//printf("find\n");</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        
+
+        
+    </section>
+</article>
+
+        </div>
+      
+    
+      
+        <div class="post-wrapper">
+          <article class="post reveal ">
+    
+<section class="meta">
+  
+  <div class="meta" id="header-meta">
+    
+      <h2 class="title">
+          <a href="/1899/11/30/hello-world/">
+              
+                  Hello World
+              
+          </a>
+      </h2>
+    
+
+    
+      <time class="metatag time">
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;1899-11-30
+      </time>
+    
+
+    
+      
+
+    
+
+    
+
+    
+
+  </div>
+</section>
+
+    <section class="article typo">
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
         
 
