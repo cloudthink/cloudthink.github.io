@@ -189,7 +189,7 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>﻿## Recurrent Neural Networks<br>人类不会每时每刻都开始思考。当你阅读这篇文章时，你会根据你对之前单词的理解来理解每个单词。你不会立刻忘记之前读的所有东西，然后再从头开始思考。你的想法有持久性。</p>
+        <h2 id="Recurrent-Neural-Networks"><a href="#Recurrent-Neural-Networks" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h2><p>人类不会每时每刻都开始思考。当你阅读这篇文章时，你会根据你对之前单词的理解来理解每个单词。你不会立刻忘记之前读的所有东西，然后再从头开始思考。你的想法有持久性。</p>
 <p>传统的神经网络无法做到这一点，这似乎是其一个主要的缺点。例如，假设您想要对电影中每个时间点发生的事件进行分类。目前尚不清楚传统神经网络如何利用其对电影中先前事件的记录来影响之后发生的事情。</p>
 <p>循环神经网络解决了这个问题。它们是带有循环的网络，允许信息持续存在。<br><img src="https://img-blog.csdnimg.cn/20190130141517792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RhdGFwYWQ=,size_16,color_FFFFFF,t_70#pic_center =130x180" alt="递归神经网络具有循环"></p>
 <center>Recurrent Neural Networks的循环结构</center><br>在上图中，一块神经网络A查看一些输入xt并输出一个值ht。循环允许信息从网络的一个步骤传递到下一个步骤。<br><br>这个循环使得循环神经网络看起来有点神秘。但是，如果你再想一下，事实证明它们与普通的神经网络并没有什么不同。可以将循环神经网络视为同一网络的多个副本，每个副本都将消息传递给后继者。如果把RNN神经网络展开：<br><img src="https://img-blog.csdnimg.cn/20190130143144185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RhdGFwYWQ=,size_16,color_FFFFFF,t_70#pic_center =530x180" alt="在这里插入图片描述"><br>                                             <center>展开的RNNs网络</center>
@@ -224,7 +224,7 @@
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-30T17:50:09+08:00" content="2019-01-30"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-30T18:10:33+08:00" content="2019-01-30"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
                 &nbsp;2019-01-30
               </time>
             
@@ -236,14 +236,28 @@
         
             <div class="prev-next">
                 
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/01/21/Ubuntu下minicom使用教程/" rel="prev" title="Ubuntu下minicom使用教程">
+                                  
+                                      Ubuntu下minicom使用教程
+                                  
+                                </a>
+                            </h4>
+                            
+                        </span>
+                    </section>
+                
                 
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
                             <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/01/21/Ubuntu下minicom使用教程/" rel="prev" title="Ubuntu下minicom使用教程">
+                                <a href="/1899/11/30/hello-world/" rel="prev" title="Hello World">
                                     
-                                        Ubuntu下minicom使用教程
+                                        Hello World
                                     
                                 </a>
                             </h4>
@@ -277,9 +291,13 @@
         <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
         <ul>
             
+                <li><a href="https://cloudthink.github.io/2019/01/29/Amazon商品信息爬虫(Python+Selenium)/">Amazon商品信息爬虫</a></li>
+            
                 <li><a href="https://cloudthink.github.io/2019/01/21/Ubuntu下minicom使用教程/">Ubuntu下minicom使用教程</a></li>
             
                 <li><a href="https://cloudthink.github.io/1899/11/30/hello-world/">Hello World</a></li>
+            
+                <li><a href="https://cloudthink.github.io/1899/11/30/leetcode刷题(C语言)/">leetcode刷题(C语言)</a></li>
             
         </ul>
     </div>
@@ -313,7 +331,7 @@
   <div class="content pure">
     
       <div class="avatar">
-        <img class="avatar" src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png">
+        <img class="avatar" src="https://api.dujin.org/bing/1366.php">
       </div>
     
     
@@ -494,7 +512,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#长期依赖（Long-Term-Dependencies）问题"><span class="toc-text">长期依赖（Long-Term Dependencies）问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM-Networks"><span class="toc-text">LSTM Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Core-Idea-Behind-LSTMs"><span class="toc-text">The Core Idea Behind LSTMs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-by-Step-LSTM-Walk-Through"><span class="toc-text">Step-by-Step LSTM Walk Through</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recurrent-Neural-Networks"><span class="toc-text">Recurrent Neural Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#长期依赖（Long-Term-Dependencies）问题"><span class="toc-text">长期依赖（Long-Term Dependencies）问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM-Networks"><span class="toc-text">LSTM Networks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Core-Idea-Behind-LSTMs"><span class="toc-text">The Core Idea Behind LSTMs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step-by-Step-LSTM-Walk-Through"><span class="toc-text">Step-by-Step LSTM Walk Through</span></a></li></ol>
     </div>
   </section>
 
