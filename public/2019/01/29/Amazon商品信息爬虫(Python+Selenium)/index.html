@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Amazon商品信息爬虫 | CloudThink</title>
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="CloudThink">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  
+
+
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          CloudThink
+        
+      </a>
+			<div class="menu">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a id="home" class="nav flat-box" href="/home/">
+									<i class="fas fa-home fa-fw"></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="home" class="nav flat-box" href="/">
+									<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives" class="nav flat-box" href="/archives/">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="about" class="nav flat-box" href="/about/">
+									<i class="fas fa-users fa-fw"></i>&nbsp;About
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索">
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/home/">
+											<i class="fas fa-home fa-fw"></i>&nbsp;主页
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class="fas fa-rss fa-fw"></i>&nbsp;博客
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class="fas fa-archive fa-fw"></i>&nbsp;归档
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="about" class="nav flat-box" href="/about/">
+											<i class="fas fa-users fa-fw"></i>&nbsp;About
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+  
+<section class="meta">
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">Amazon商品信息爬虫</h1>
+      
+    
+
+    
+      <time class="metatag time">
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-29
+      </time>
+    
+
+    
+      
+
+    
+
+    
+      
+        <div class="metatag browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          &nbsp;<span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
+      
+    
+
+    
+
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>﻿### 1.环境配置</p>
+<ul>
+<li>Ubuntu16.04 </li>
+<li>python3 </li>
+<li>Chrome以及与之对应的chromedriver</li>
+<li>Selenium</li>
+</ul>
+<p>版本参考：<a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">chromedriver下载地址</a></p>
+<h3 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h3><p>1.在selenium中使用代理，在Ubuntu中设置sock5代理端口<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">chrome_options.add_argument(<span class="string">'--proxy-server=socks5://127.0.0.1:1080'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>2.爬虫类<a id="more"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function, division</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">chrome_options = webdriver.ChromeOptions()</span><br><span class="line">chrome_options.add_argument(<span class="string">'--proxy-server=socks5://127.0.0.1:1080'</span>)</span><br><span class="line"><span class="comment">#reload(sys)</span></span><br><span class="line"><span class="comment">#sys.setdefaultencoding("utf-8")</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Spider</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.options = Options()</span><br><span class="line">        self.options.add_argument(<span class="string">'--headless'</span>)</span><br><span class="line">        <span class="comment">#q1(2)</span></span><br><span class="line">        self.driver = webdriver.Chrome(chrome_options=chrome_options,executable_path=<span class="string">"chromedriver"</span>)</span><br><span class="line">        self.driver.implicitly_wait(<span class="number">10</span>)</span><br><span class="line">        self.verificationErrors = []</span><br><span class="line">        self.accept_next_alert = <span class="keyword">True</span></span><br><span class="line">        self.url = <span class="string">"https://www.amazon.com/s?ie=UTF8&amp;page=1&amp;rh=n%3A2407749011%2Ck%3AApple&amp;page=1"</span></span><br><span class="line">        self.driver.get(self.url)</span><br><span class="line">        self.data = []</span><br><span class="line">        <span class="comment">#q1(1)</span></span><br><span class="line">        self.detail_urls = []</span><br><span class="line">    <span class="comment">#qi(5)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fanye</span><span class="params">(self)</span>:</span></span><br><span class="line">        next_page_button = self.driver.find_element_by_xpath(<span class="string">"//a[@id='pagnNextLink']"</span>)</span><br><span class="line">        next_page_button.send_keys(<span class="string">"\n"</span>)</span><br><span class="line">    <span class="comment">#q1(3)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_single_page</span><span class="params">(self)</span>:</span></span><br><span class="line">        lists = self.driver.find_elements_by_css_selector(<span class="string">"li[id^='result_']"</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#print(len(lists),lists)</span></span><br><span class="line">        <span class="keyword">for</span> li_element <span class="keyword">in</span> lists[<span class="number">0</span>:<span class="number">20</span>]:</span><br><span class="line"></span><br><span class="line">            manufacturer, screen_size, product_dimensions_text, rating_content,\</span><br><span class="line">                reviews_content, more_offer_text, offer_Price, display_type_text, product_detail = [<span class="keyword">None</span>] * <span class="number">9</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                manufacturer = li_element.find_elements_by_xpath(</span><br><span class="line">                    <span class="string">".//div[@class='a-fixed-left-grid-col a-col-right']/div/div"</span>)[<span class="number">1</span>].text</span><br><span class="line">                <span class="keyword">if</span> <span class="string">"by Apple"</span> <span class="keyword">not</span> <span class="keyword">in</span> manufacturer:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                manufacturer = <span class="keyword">None</span></span><br><span class="line">                <span class="comment">#print("ERROR: find manufacturer has something error: ", e)</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                url_detail_in_div = li_element.find_element_by_xpath(</span><br><span class="line">                    <span class="string">".//div[@class='a-fixed-left-grid-col a-col-right']/div/div/a[contains(@title, 'Apple')]"</span>)</span><br><span class="line">                detail_url_ = url_detail_in_div.get_attribute(<span class="string">"href"</span>)</span><br><span class="line">                product_detail = url_tile = url_detail_in_div.get_attribute(<span class="string">"title"</span>)</span><br><span class="line">                <span class="keyword">if</span> <span class="string">"slredirect"</span> <span class="keyword">in</span> detail_url_:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># print(detail_url_)</span></span><br><span class="line">                self.detail_urls.append(detail_url_)</span><br><span class="line">                js = <span class="string">'window.open("&#123;&#125;");'</span>.format(detail_url_)</span><br><span class="line">                self.driver.execute_script(js)</span><br><span class="line">                handles = self.driver.window_handles</span><br><span class="line">                <span class="keyword">for</span> handle <span class="keyword">in</span> handles:</span><br><span class="line">                    <span class="keyword">if</span> handle != self.driver.current_window_handle:</span><br><span class="line">                        self.driver.switch_to_window(handle)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    table1 = self.driver.find_elements_by_xpath(<span class="string">"//table[@id='HLCXComparisonTable']/tbody/tr"</span>)</span><br><span class="line">                    <span class="keyword">for</span> tr <span class="keyword">in</span> table1:</span><br><span class="line">                        html1 = tr.get_attribute(<span class="string">"innerHTML"</span>)</span><br><span class="line">                        <span class="keyword">if</span> <span class="string">"Screen Size"</span> <span class="keyword">in</span> html1:</span><br><span class="line">                            td_inches = tr.find_elements_by_xpath(<span class="string">".//td"</span>)[<span class="number">0</span>]</span><br><span class="line">                            screen_size = td_inches.text</span><br><span class="line">                            <span class="comment"># print(screen_size)</span></span><br><span class="line">                            <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">                    <span class="comment">#print("ERROR: find screen_size has something error: ", e)</span></span><br><span class="line">                <span class="comment">#q1(4)</span></span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    table2 = self.driver.find_elements_by_xpath(<span class="string">"//table[@id='productDetails_detailBullets_sections1']/tbody/tr"</span>)</span><br><span class="line">                    <span class="keyword">for</span> tr <span class="keyword">in</span> table2:</span><br><span class="line">                        html2 = tr.get_attribute(<span class="string">"innerHTML"</span>)</span><br><span class="line">                        <span class="keyword">if</span> <span class="string">"Product Dimensions"</span> <span class="keyword">in</span> html2:</span><br><span class="line">                            product_dimensions_html = tr.find_elements_by_xpath(<span class="string">".//td"</span>)[<span class="number">0</span>]</span><br><span class="line">                            product_dimensions_text = product_dimensions_html.text</span><br><span class="line">                            <span class="comment"># print(product_dimensions_text)</span></span><br><span class="line">                            <span class="keyword">continue</span></span><br><span class="line">                        <span class="keyword">if</span> <span class="string">"Customer Reviews"</span> <span class="keyword">in</span> html2:</span><br><span class="line">                            rating_html = tr.find_element_by_xpath(<span class="string">".//td"</span>)</span><br><span class="line">                            rating_text = rating_html.text</span><br><span class="line">                            reviews_text, rating_content = rating_text.split(<span class="string">"\n"</span>)</span><br><span class="line">                            reviews_content = reviews_text.split(<span class="string">" "</span>)[<span class="number">0</span>]</span><br><span class="line">                            <span class="comment"># print(rating_content)</span></span><br><span class="line">                            <span class="comment"># print(reviews_content)</span></span><br><span class="line">                            <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">                    <span class="comment">#print("ERROR: find product_dimensions_text rating_content reviews_content, some problems ",e)</span></span><br><span class="line">                self.driver.close()</span><br><span class="line">                self.driver.switch_to_window(handles[<span class="number">0</span>])</span><br><span class="line">                <span class="comment"># print(product_detail)</span></span><br><span class="line">                <span class="comment"># print("\n")</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">                <span class="comment">#print("ERROR: get item detail url pages has problems", e)</span></span><br><span class="line">            <span class="comment"># break</span></span><br><span class="line">        </span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                more_offer_html = li_element.find_element_by_css_selector(<span class="string">"a[href*='offer-listing']"</span>)</span><br><span class="line">                more_offer_text = more_offer_html.text</span><br><span class="line">                <span class="comment"># print("more_offer_text is: ", more_offer_text)</span></span><br><span class="line">                <span class="comment"># print(more_offer_html.get_attribute('innerHTML'))</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">                <span class="comment">#print("ERROR: more_offer has problem: ", e)</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                offer_price_html = li_element.find_element_by_xpath(<span class="string">".//span[@class='sx-price sx-price-large']"</span>)</span><br><span class="line">                offer_Price = offer_price_html.text</span><br><span class="line">                <span class="comment"># print(offer_Price)</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">                <span class="comment">#print("ERROR: find offer_Price has problem: ", e)</span></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                display_type_html = li_element.find_elements_by_xpath(</span><br><span class="line">                    <span class="string">".//dl[@class='a-definition-list a-vertical s-padding-left-base']/li/span[@class='a-list-item a-size-small a-color-secondary']"</span>)</span><br><span class="line">                <span class="keyword">for</span> _span <span class="keyword">in</span> display_type_html:</span><br><span class="line">                    <span class="keyword">if</span> <span class="string">"Display Type:"</span> <span class="keyword">in</span> _span.text:</span><br><span class="line">                        display_type_html = _span.text</span><br><span class="line">                        display_type_text = display_type_html.split(<span class="string">":"</span>)[<span class="number">1</span>]</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">                <span class="comment">#print("ERROR: find display_type has problem: ", e)</span></span><br><span class="line">                <span class="comment"># print("\n")</span></span><br><span class="line">                <span class="comment"># break</span></span><br><span class="line">    </span><br><span class="line">            _tmp_dt = [manufacturer, screen_size, product_dimensions_text, rating_content, reviews_content, more_offer_text,</span><br><span class="line">                  offer_Price, display_type_text, product_detail, <span class="keyword">None</span>, <span class="keyword">None</span>]</span><br><span class="line">            print(_tmp_dt)</span><br><span class="line">            self.data.append(_tmp_dt)</span><br><span class="line">            time.sleep(random.randint(<span class="number">0</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(self)</span>:</span></span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span> <span class="keyword">and</span> i&lt;=<span class="number">4</span>:</span><br><span class="line">            self.get_single_page()</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                i=i+<span class="number">1</span></span><br><span class="line">                self.fanye()</span><br><span class="line">            <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> self.data,self.detail_urls</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Spider()</span><br><span class="line">dt, url_lists = a.main()</span><br><span class="line">print(url_lists)</span><br><span class="line"></span><br><span class="line">col_name = [<span class="string">"Manufacturer"</span>, <span class="string">"Display_Size"</span>, <span class="string">"Display_Dimensions"</span>, <span class="string">"Rating"</span>, <span class="string">"Number_of_Review"</span>, <span class="string">"More_Offer"</span>, <span class="string">"Offer_Price"</span>, <span class="string">"Display_Type"</span>, <span class="string">"Product_detail"</span>, <span class="string">"Special_Feature"</span>, <span class="string">"Special_Offer"</span>]</span><br><span class="line">df = pd.DataFrame(dt,columns=col_name)</span><br><span class="line"><span class="comment">#df=df.rename(columns=col_name)</span></span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+
+      </div>
+        
+          <section class="meta" id="footer-meta">
+            
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-31T11:25:02+08:00" content="2019-01-31"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-01-31
+              </time>
+            
+            
+            
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/21/Ubuntu下minicom使用教程/" rel="prev" title="Ubuntu下minicom使用教程">
+                                    
+                                        Ubuntu下minicom使用教程
+                                    
+                                </a>
+                            </h4>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+
+      
+        
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;相关文章</h4>
+        <ul>
+            
+                <li><a href="https://cloudthink.github.io/2019/01/21/Ubuntu下minicom使用教程/">Ubuntu下minicom使用教程</a></li>
+            
+                <li><a href="https://cloudthink.github.io/2019/01/21/理解RNN与LSTM Networks/">理解RNN与LSTM神经网络</a></li>
+            
+                <li><a href="https://cloudthink.github.io/2019/01/01/leetcode刷题(C语言)/">leetcode刷题(C语言)</a></li>
+            
+                <li><a href="https://cloudthink.github.io/1899/11/30/hello-world/">Hello World</a></li>
+            
+        </ul>
+    </div>
+
+
+      
+
+      
+    </section>
+  </article>
+
+
+
+<script>
+    window.subData = {
+        title: 'Amazon商品信息爬虫',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class="author">
+  <div class="content pure">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://api.dujin.org/bing/1366.php">
+      </div>
+    
+    
+      <div class="text">
+        
+        
+        
+          <p><span id="jinrishici-sentence">CloudThink</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://cloudthink.github.io/" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/cloudthink" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class="plain">
+  
+<header class="pure">
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Notice</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/wiki/material-x/" title="https://xaoxuu.com/wiki/material-x/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class="content pure">
+    <p>Nothing</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        
+
+      
+    
+  
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/cloudthink" title="https://github.com/cloudthink">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://github.com/cloudthink/Project_Zhisou" href="https://github.com/cloudthink/Project_Zhisou">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Zhisou
+          </div>
+          
+            <div class="badge">(Python简易搜索引擎)</div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;特别链接</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://cloudthink.github.io/about/" href="https://cloudthink.github.io/about/">
+          <div class="name">
+            
+              <i class="fas fa-comment-dots fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;关于我 / 留言板
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class="music">
+    
+<header class="pure">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://music.163.com/#/user/home?id=63035382" title="https://music.163.com/#/user/home?id=63035382">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content pure">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="netease" data-type="playlist" data-id="746319661" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章目录</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-代码"><span class="toc-text">2.代码</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://cloudthink.github.io/" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/cloudthink" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+  
+
+
+  
+  
+  
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133543600-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-133543600-1');
+    </script>
+
+</body>
+</html>

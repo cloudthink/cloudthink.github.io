@@ -1,0 +1,26 @@
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Writing database to /home/harrison/code/cloudthink.github.io/db.json","time":"2019-01-21T10:18:13.496Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Hexo version: \u001b[35m3.8.0\u001b[39m","time":"2019-01-21T10:18:13.506Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Working directory: \u001b[35m~/code/cloudthink.github.io/\u001b[39m","time":"2019-01-21T10:18:13.506Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Config loaded: \u001b[35m~/code/cloudthink.github.io/_config.yml\u001b[39m","time":"2019-01-21T10:18:13.573Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-autoprefixer\u001b[39m","time":"2019-01-21T10:18:13.776Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2019-01-21T10:18:13.779Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2019-01-21T10:18:13.780Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-feed\u001b[39m","time":"2019-01-21T10:18:13.781Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2019-01-21T10:18:13.781Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2019-01-21T10:18:13.803Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-json-content\u001b[39m","time":"2019-01-21T10:18:13.825Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-search\u001b[39m","time":"2019-01-21T10:18:13.825Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-helper-qrcode\u001b[39m","time":"2019-01-21T10:18:13.833Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2019-01-21T10:18:13.833Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-recommended-posts\u001b[39m","time":"2019-01-21T10:18:13.928Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2019-01-21T10:18:13.929Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-less\u001b[39m","time":"2019-01-21T10:18:13.954Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-marked\u001b[39m","time":"2019-01-21T10:18:13.959Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2019-01-21T10:18:13.960Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2019-01-21T10:18:14.002Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":30,"msg":"Deploying: \u001b[35mgit\u001b[39m","time":"2019-01-21T10:18:14.009Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":30,"msg":"Clearing .deploy_git folder...","time":"2019-01-21T10:18:14.012Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":30,"msg":"Copying files from public folder...","time":"2019-01-21T10:18:14.016Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":30,"msg":"Copying files from extend dirs...","time":"2019-01-21T10:18:14.023Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":60,"err":{"message":"Spawn failed","name":"Error","stack":"Error: Spawn failed\n    at ChildProcess.<anonymous> (/home/harrison/code/cloudthink.github.io/node_modules/hexo-util/lib/spawn.js:52:19)\n    at ChildProcess.emit (events.js:188:13)\n    at Process.ChildProcess._handle.onexit (internal/child_process.js:254:12)","code":128},"msg":"Something's wrong. Maybe you can find the solution here: \u001b[4mhttp://hexo.io/docs/troubleshooting.html\u001b[24m","time":"2019-01-21T10:18:16.388Z","v":0}
+{"name":"hexo","hostname":"harrison-JN","pid":6443,"level":20,"msg":"Database saved","time":"2019-01-21T10:18:16.394Z","v":0}
