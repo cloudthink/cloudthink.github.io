@@ -190,7 +190,7 @@
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
         <h2 id="Recurrent-Neural-Networks"><a href="#Recurrent-Neural-Networks" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h2><p>人类不会每时每刻都开始思考。当你阅读这篇文章时，你会根据你对之前单词的理解来理解每个单词。你不会立刻忘记之前读的所有东西，然后再从头开始思考。你的想法有持久性。</p>
-<p>传统的神经网络无法做到这一点，这似乎是其一个主要的缺点。例如，假设您想要对电影中每个时间点发生的事件进行分类。目前尚不清楚传统神经网络如何利用其对电影中先前事件的记录来影响之后发生的事情。</p>
+<p>传统的神经网络无法做到这一点，这似乎是其一个主要的缺点。例如，假设您想要对电影中每个时间点发生的事件进行分类。目前尚不清楚传统神经网络如何利用其对电影中先前事件的记录来影响之后发生的事情。<a id="more"></a></p>
 <p>循环神经网络解决了这个问题。它们是带有循环的网络，允许信息持续存在。<br><img src="https://img-blog.csdnimg.cn/20190130141517792.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RhdGFwYWQ=,size_16,color_FFFFFF,t_70#pic_center =130x180" alt="递归神经网络具有循环"></p>
 <center>Recurrent Neural Networks的循环结构</center><br>在上图中，一块神经网络A查看一些输入xt并输出一个值ht。循环允许信息从网络的一个步骤传递到下一个步骤。<br><br>这个循环使得循环神经网络看起来有点神秘。但是，如果你再想一下，事实证明它们与普通的神经网络并没有什么不同。可以将循环神经网络视为同一网络的多个副本，每个副本都将消息传递给后继者。如果把RNN神经网络展开：<br><img src="https://img-blog.csdnimg.cn/20190130143144185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0RhdGFwYWQ=,size_16,color_FFFFFF,t_70#pic_center =530x180" alt="在这里插入图片描述"><br>                                             <center>展开的RNNs网络</center>
 
@@ -224,8 +224,8 @@
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-30T18:10:33+08:00" content="2019-01-30"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-01-30
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-31T11:25:54+08:00" content="2019-01-31"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-01-31
               </time>
             
             
@@ -613,5 +613,15 @@
 
 
     <script>setLoadingBarProgress(100);</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133543600-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-133543600-1');
+    </script>
+
 </body>
 </html>
